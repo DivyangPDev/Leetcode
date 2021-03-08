@@ -35,23 +35,39 @@
 # @lc code=start
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        i = 0
-        j = 0
-        max_len = 0
-        substr_set = set()
         
-        while j < len(s):
-            if s[j] not in substr_set:
-                substr_set.add(s[j])
-                j+=1
+        #Faster algo 
+        used = {}
+        max_length = start = 0
+
+        for i, c in enumerate(s):
+            if c in used and start <= used[c]:
+                start = used[char] + 1
             else:
-                if max_len <= len(s[i:j]):
-                    max_len = len(s[i:j])
-                substr_set = set()
-                i+=1
-                j = i
+                max_length = max(max_length, i - start + 1)
+            
+            used[c] = i
+        
+        return max_length
+
+        # Brute Force Method a little slow
+        # i = 0
+        # j = 0
+        # max_len = 0
+        # substr_set = set()
+        
+        # while j < len(s):
+        #     if s[j] not in substr_set:
+        #         substr_set.add(s[j])
+        #         j+=1
+        #     else:
+        #         if max_len <= len(s[i:j]):
+        #             max_len = len(s[i:j])
+        #         substr_set = set()
+        #         i+=1
+        #         j = i
                 
-        return max(max_len, len(s[i:j]))
+        # return max(max_len, len(s[i:j]))
             
 
 # @lc code=end
