@@ -42,7 +42,7 @@ class Solution:
 
         for i, c in enumerate(s):
             if c in used and start <= used[c]:
-                start = used[char] + 1
+                start = used[c] + 1
             else:
                 max_length = max(max_length, i - start + 1)
             
