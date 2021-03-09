@@ -19,6 +19,7 @@
 # Follow up:
 # What if the inputs contain unicode characters? How would you adapt your solution to such case?
 
+
 # @lc code=start
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
